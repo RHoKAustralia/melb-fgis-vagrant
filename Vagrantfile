@@ -9,6 +9,7 @@ Vagrant::Config.run do |config|
       
     config.vm.customize ["modifyvm", :id, "--memory", 256]
     node_a.vm.provision :chef_solo do |chef|
+        chef.cookbooks_path = ["cookbooks", "site-cookbooks"]
         chef.roles_path = "roles"
         chef.add_role "fgis"
         chef.json = JSON.load('{
